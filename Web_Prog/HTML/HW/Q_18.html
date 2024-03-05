@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Q_18</title>
+    </head>
+    <style>
+        #div_1{
+            background-color: aquamarine;
+            width: 400px;
+            height: 200px;
+            transition: width 4s, height 2s;
+            animation: anime 5s infinite;
+            box-shadow: 10px 5px 5px black;
+        }
+
+        #div_1:hover{
+            width: 600px;
+            height: 400px;
+            transform: rotate(-45deg);
+        }
+
+        @keyframes anime{
+            0%{
+                position: absolute;
+                left: 10px;
+                top: 10px;
+            }
+
+            100%{
+                position: absolute;
+                left: 500px;
+                right: 500px;
+            }
+        }
+    </style>
+    <body>
+        <div id="div_1">
+            Hello There
+        </div>
+    </body>
+</html>

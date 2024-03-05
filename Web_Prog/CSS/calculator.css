@@ -1,0 +1,27 @@
+#butt_1, #butt_2, #butt_3, #butt_4, #butt_5, #butt_6, #butt_7, #butt_8, #butt_9{
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+    background-color: darkgray;
+}
+#butt_0{
+    border-radius: 50px;
+    height: 50px;
+    width: 105px;
+    background-color: darkgray;
+}
+#butt_plus, #butt_minus, #butt_multiply, #butt_divide, #butt_equals{
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+    background-color: #FFA500;
+}
+#ans{
+    background-color: dimgray;
+    border-radius: 25px;
+    width: 210px;
+    height:50px;
+    position: absolute;
+    left: 40%;
+    top: 32%;   
+}

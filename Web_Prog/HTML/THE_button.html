@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE_button</title>
+</head>
+<body>
+    <div style="font-family: Verdana, Geneva, Tahoma, sans-serif;" id="THE_DIV">
+        Are you gay? (if you leave page you are SUPER gay)
+    </div>
+    <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" id="yes">YES</button>
+    <button style="font-family: Verdana, Geneva, Tahoma, sans-serif" id="no">NO</button>
+</body>
+<script language="javascript">
+    var lft=0, tp=0;
+    var x=document.getElementById("no");
+
+    document.getElementById("no").addEventListener('mouseover', move);
+    function move(){
+        x.style.position="absolute";
+        if(lft<=600 && tp==0){
+            if(lft==0){
+                lft+=120;
+                x.style.left=lft+'px';
+            }
+            lft+=60;
+            x.style.left=lft+'px';
+        }
+        if(lft>600 && tp<=350){
+            tp+=60;
+            x.style.top=tp+'px';
+        }
+        if(tp>=350 && lft>=100){
+            lft-=60;
+            x.style.left=lft+'px';
+        }
+        if(lft<=100 && tp>0){
+            tp-=60;
+            x.style.top=tp+'px';
+        }
+
+    }
+
+    document.getElementById("yes").addEventListener('click', function(){
+        document.getElementById("THE_DIV").innerHTML="I knew it :3";
+    });
+
+    document.getElementById("no").addEventListener('click', function(){
+        document.getElementById("THE_DIV").innerHTML="Bro :3";
+    });
+</script>
+</html>

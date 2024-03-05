@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+</head>
+<body onload="time()">
+    <div style="position: absolute; top:7%; left: 3%; width:300px; height: 50px; background-color: green; border: 3px solid black;">
+        <div style="background-color: grey; height: 30px; width: 260px; position: relative; left: 16px; top: 8px;  border: 3px solid black; border-radius: 15px; box-shadow: 1px 1px 1px black;" id="stpw">
+        </div>
+    </div>
+    <button id="butt1" style="position: absolute; left:5%; top: 2%">start</button>
+    <button id="butt2" style="position: absolute; left:15%; top: 2%">stop</button>
+</body>
+<script language="javascript">
+    var hr, min, sec, msc;
+    var str=document.getElementById("butt1");
+    var stp=document.getElementById("butt2");
+    var timer;
+    var x=document.getElementById("stpw");
+
+    str.addEventListener('click', function(){
+        timer=setInterval(start_, 10);
+    });
+        
+    stp.addEventListener('click', function(){
+        clearInterval(timer);
+    });
+
+    function time(){
+        hr=0, min=0, sec=0, msc=0;
+        var watch=hr+":"+min+":"+sec+":"+msc;
+        var x=document.getElementById("stpw");    
+        x.innerHTML="<div style='position: relative; top: 20%; left: 5%;'>Time is "+watch+"</div>";
+    }
+        
+    function start_(){
+        msc++;
+        if(msc==99){
+            msc=0;
+            sec++;
+            if(sec==59){
+                sec=0;
+                min++;
+                if(min==59){
+                    min=0;
+                    hr++;
+                }
+            } 
+        }
+        x.innerHTML="<div style='position: relative; top: 20%; left: 5%;'>Time is "+hr+":"+min+":"+sec+":"+msc+"</div>";
+    }
+</script>
+</html>

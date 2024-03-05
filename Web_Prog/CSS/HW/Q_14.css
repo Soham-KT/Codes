@@ -1,0 +1,29 @@
+#target{
+    background: aquamarine;
+    height: 200px;
+    width: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#target:hover{
+    transform: rotateZ(315deg);
+    
+}
+
+#target::-webkit-scrollbar {
+    width: 10px;
+}
+
+#target::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#target::-webkit-scrollbar-thumb {
+    background: navy;
+}
+  
+#target::-webkit-scrollbar-thumb:hover {
+    background: orange;
+    border-radius: 100px;
+}

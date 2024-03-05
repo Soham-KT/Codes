@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/css">
+        input{
+            width: 100px;
+            height: 50px;
+            background-color: aquamarine;
+            transition: height 2s;
+            animation: change 5s infinite;
+            position:absolute;
+        }
+
+        @keyframes change{
+            0% { left:0%; top: 0%; background-color: aquamarine;}
+            
+            25% { left:50%; top: 0%; background-color:burlywood ;}
+            
+            50% { left:50%; top: 50%; background-color:cadetblue;}
+            
+            75% { left:0%; top: 50%; background-color:chartreuse;}
+
+            100% { left:0%; top: 0%; background-color:cornflowerblue;}
+        }
+
+        input:hover{
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform</title>
+</head>
+<body>
+    <div>
+        <input type="button" value="change">
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.splitleft
+{
+    border-style: solid;
+    height: 100%;
+    width: 20%;
+    top: 0%;
+    left: 0%;
+    position: absolute;
+    background-color: chartreuse;
+}
+
+.splitright
+{
+    border-style: solid;
+    height: 100%;
+    width: 80%;
+    top:0%;
+    right: 0%;
+    position: absolute;
+    background-color: coral;
+}

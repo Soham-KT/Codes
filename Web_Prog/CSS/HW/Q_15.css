@@ -1,0 +1,13 @@
+#target{
+    position:absolute;
+    height:100px;
+    width:100px;
+    top:100px;
+    left:100px;
+    animation: anime 10s infinite;
+}
+
+@keyframes anime {
+    0% { background-color: red; }
+    100%{ background-color: green; height: 200px; width: 200px;}
+}

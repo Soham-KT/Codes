@@ -1,0 +1,31 @@
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+body{
+    font-family:'Anonymous Pro', monospace;
+    background-color: #37393e; 
+    color:whitesmoke;
+}
+
+a:link {
+    color: #9acd32;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:visited {
+    color: #9acd32;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:hover {
+    color: #9acd32;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:active {
+    color: #9acd32;
+    background-color: transparent;
+    text-decoration: none;
+}

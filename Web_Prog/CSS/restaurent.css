@@ -1,0 +1,54 @@
+.Background
+{
+    background-repeat: repeat-y;
+    background-size: 100% 700px;
+    top: 0%;
+}
+
+.box
+{
+    border: 5px;
+    border-color: cadetblue;
+    border-style: ridge;
+    z-index: -1;
+}
+
+#GoToTop
+{
+    position:fixed;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color:bisque;
+    cursor: pointer;
+}
+
+html
+{
+    scroll-behavior: smooth;
+}
+
+.box:hover
+{
+    border: 5px;
+    border-color: cadetblue;
+    border-style: ridge;
+    z-index: -1;
+    background-image: url("https://wallpaperaccess.com/full/10657.jpg");
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color:crimson;
+}
+
+.hide
+{
+    display:none;
+}
+
+.hoverthis:hover + .hide
+{
+    display:block;
+}

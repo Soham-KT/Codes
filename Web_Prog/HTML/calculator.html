@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="/Web_Prog/CSS/calculator.css">
+</head>
+<body onload="lol()">
+    <div id="ans"></div>
+    <div id="buttons" style="position:absolute; top: 40%; left: 40%;">
+        <button id="butt_1" name="1" onclick="for_num_1(this.name); for_num_2(this.name);">1</button>
+        <button id="butt_2" name="2" onclick="for_num_1(this.name); for_num_2(this.name);">2</button>
+        <button id="butt_3" name="3" onclick="for_num_1(this.name); for_num_2(this.name);">3</button>
+        <button id="butt_plus" name="43" onclick="for_op(this.name);">+</button>
+        <br>
+        <button id="butt_4" name="4" onclick="for_num_1(this.name); for_num_2(this.name);">4</button>
+        <button id="butt_5" name="5" onclick="for_num_1(this.name); for_num_2(this.name);">5</button>
+        <button id="butt_6" name="6" onclick="for_num_1(this.name); for_num_2(this.name);">6</button>
+        <button id="butt_minus" name="45" onclick="for_op(this.name);">-</button>
+        <br>
+        <button id="butt_7" name="7" onclick="for_num_1(this.name); for_num_2(this.name);">7</button>
+        <button id="butt_8" name="8" onclick="for_num_1(this.name); for_num_2(this.name);">8</button>
+        <button id="butt_9" name="9" onclick="for_num_1(this.name); for_num_2(this.name);">9</button>
+        <button id="butt_multiply" name="42" onclick="for_op(this.name);">*</button>
+        <br>
+        <button id="butt_0" name="0" onclick="for_num_1(this.name); for_num_2(this.name);">0</button>
+        <button id="butt_equals" name="=" onclick="res()">=</button>
+        <button id="butt_divide" name="47" onclick="for_op(this.name);">/</button>
+    </div>
+</body>
+<script src="/Web_Prog/JS/calculator.js"></script>
+</html>

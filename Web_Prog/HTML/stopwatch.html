@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+</head>
+<body onload="time()">
+    <div style="width:400px; height: 200px; background-color: grey;" id="stpw">
+    </div>
+    <div style="width:400px; height: 200px; background-color: grey; position: absolute; top: 32%;" id="lap">
+    </div>
+    <button id="butt1" style="position: absolute; left:2%; top: 25%">start</button>
+    <button id="butt2" style="position: absolute; left:10%; top: 25%">stop</button>
+    <button id="butt3" style="position: absolute; left:25%; top: 25%">restart</button>
+    <button id="butt4" style="position: absolute; left:17%; top: 25%" onclick="laap()">lap</button>
+</body>
+<script language="javascript">
+    var hr, min, sec;
+    var str=document.getElementById("butt1");
+    var stp=document.getElementById("butt2");
+    var res=document.getElementById("butt3");
+    var cont=document.getElementById("lap");
+    var timer;
+    var x=document.getElementById("stpw");    
+    var lap_=1;
+
+    str.addEventListener('click', function(){
+        timer=setInterval(start_, 100);
+    });
+        
+    stp.addEventListener('click', function(){
+        clearInterval(timer);
+    });
+
+    res.addEventListener('click', function(){
+        window.location.reload();
+    });
+
+    function time(){
+        hr=0, min=0, sec=0;
+        var watch=hr+":"+min+":"+sec;
+        var x=document.getElementById("stpw");    
+        x.innerHTML=watch;
+    }
+        
+    function start_(){
+        sec++;
+        if(sec==59){
+            sec=0;
+            min++;
+            if(min==59){
+                min=0;
+                hr++;
+            }
+        } 
+                    
+        x.innerHTML=hr+":"+min+":"+sec;
+    }
+    
+    function laap(){
+        cont.innerHTML+="Lap "+lap_+": "+x.innerHTML+"<br>";
+        lap_++;
+    }
+</script>
+</html>

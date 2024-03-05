@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <script>
+        var hr, min, sec;
+        var inpt=prompt("Enter time: ");
+        var x=document.getElementById("stpw");
+
+        function time(){
+            sec=inpt;
+            var watch=hr+":"+min+":"+sec;
+            var x=document.getElementById("stpw");
+            x.innerHTML=watch;
+        }
+
+        function start(){
+            var x=document.getElementById("stpw");
+            start_bc=setInterval(start_, 1000)
+            function start_(){
+                if(sec==60){
+                    sec=0;
+                    min++;
+                    if(min==60){
+                        min=0;
+                        hr++;
+                    }
+                } 
+                else sec++;
+
+                x.innerHTML+=hr+":"+min+":"+sec;
+            }
+        }
+    </script>
+</head>
+<body onclick="time()">
+    <div style="width:400px; height: 200px; background-color: grey;" id="stpw">
+    </div>
+</body>
+</html>

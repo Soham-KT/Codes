@@ -1,0 +1,6 @@
+Item Name: Toy gun
+Item Code: 101101
+Item Description: Nerf toy gun
+Starting Bid: 6900
+Client Name: Soham Kothari
+Client ID: 12345
