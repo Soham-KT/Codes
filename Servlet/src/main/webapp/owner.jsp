@@ -1,3 +1,7 @@
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="java.io.PrintWriter" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -171,23 +175,63 @@ button:hover{
 <!---------------------------------------------------------------------------------------->
 
 <body>
-<div class="login-form">
-  <div class="text">
-    Sign Up
+  <div class="login-form">
+     <div class="text">
+        Enter items
+     </div>
+     <form action="/Servlet/insertindb" method="get">
+        <div class="field">
+           <div class="fas fa-envelope"></div>
+           <input type="text" placeholder="Item ID" name="id">
+        </div>
+        <div class="field">
+           <div class="fas fa-envelope"></div>
+           <input type="text" placeholder="Item Name" name="name">
+        </div>
+        <div class="field">
+           <div class="fas fa-envelope"></div>
+           <input type="number" placeholder="Quantity" name="quantity">
+        </div>
+        <button>Add to shop</button>
+     </form>
   </div>
-  <form action="/Servlet/signup" method="get">
-    <div class="field">
-      <div class="fas fa-envelope"></div>
-      <input type="text" placeholder="Name" name="name">
+
+  <div class="login-form">
+    <div class="text">
+        Items Available
     </div>
-    <div class="field">
-      <div class="fas fa-envelope"></div>
-      <input type="password" placeholder="Password" name="password">
+    <br>
+    <div class="feild">
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <th style="background:#1b1b1b; color: #868686;">Item ID</th>
+                <th style="background:#1b1b1b; color: #868686;">Item Name</th>
+                <th style="background:#1b1b1b; color: #868686;">Item Quantity</th>
+                <th style="background:#1b1b1b; color: #868686;">Price per item</th>
+            </tr>
+
+            <%
+                DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ada_assignment", "root", "root");
+                Statement stat = conn.createStatement();
+                ResultSet res = stat.executeQuery("Select * from item_list;");
+
+                while (res.next()) {
+            %>
+                    <tr>
+                    <th class='text' style='background:#1b1b1b; color: #868686;'><%= res.getString("itemid") %></th>
+                    <th class='text' style='background:#1b1b1b; color: #868686;'><%= res.getString("itemname") %></th>
+                    <th class='text' style='background:#1b1b1b; color: #868686;'><%= res.getInt("quantity") %></th>
+                    <th class='text' style='background:#1b1b1b; color: #868686;'><%= res.getInt("priceperitem") %></th>
+                    </tr>
+            <%
+                }
+            %>
+
+
+        </table>
     </div>
-    <button>Enter</button>
-    <div class="link"><a href="loginPage">Already have an account? Login here</a></div>
-  </form>
-</div>
+  </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

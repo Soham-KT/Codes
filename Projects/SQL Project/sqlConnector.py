@@ -2,7 +2,7 @@ import mysql.connector
 
 # ----------------------------------------------------------- connecting to database
 
-mydb = mysql.connector.connect(host='localhost', user='root', password='')
+mydb = mysql.connector.connect(host='localhost', user='root', password='root')
 database = "Form_Database"
 
 # Cursor objects interact with the MySQL server using a MySQLConnection object.

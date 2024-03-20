@@ -1,6 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="main.loginStatus" %>
+
+
+<%
+loginStatus ls = new loginStatus();
+if(loginStatus.getIsLogin() == false){
+    response.sendRedirect("/Servlet/loginPage.html");
+}
+ %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     /* grid container */
 .holy-grail-grid {
@@ -169,56 +184,67 @@ button:hover{
 </head>
 <!---------------------------------------------------------------------------------------->
 
-
 <body>
-  <div class="holy-grail-grid">
-    <header class="header">
-      <div class="text">
-        This is a shopping cart system
-      </div>
-    </header>
-
-
-    <main class="main-content">
-      <div class="login-form">
-        <div class="text">
-          DB here
+  <div class="login-form">
+     <div class="text">
+        Enter items
+     </div>
+     <form action="/Servlet/insertincart" method="get">
+        <div class="field">
+           <div class="fas fa-envelope"></div>
+           <input type="text" placeholder="Item ID" name="id">
         </div>
-      </div>
-    </main>
-    <section class="left-sidebar">
-      <div class="login-form">
-        <div class="text">
-          Shopping cart entry
-          <form>
-            <div class="field">
-               <div class="fas fa-envelope"></div>
-               <input type="text" placeholder="Item Name">
-            </div>
-            <div class="field">
-               <div class="fas fa-lock"></div>
-               <input type="text" placeholder="Quantity">
-            </div>
-            <button>Add to cart</button>
-         </form>
+        <div class="field">
+           <div class="fas fa-envelope"></div>
+           <input type="text" placeholder="Item Name" name="name">
         </div>
-      </div>
-    </section>
+        <div class="field">
+           <div class="fas fa-envelope"></div>
+           <input type="number" placeholder="Quantity" name="quantity">
+        </div>
+        <button>Add to cart</button>
+     </form>
+     <form action="/Servlet/checkout" method="get">
+        <button>Go to cart</button>
+     </form>
+  </div>
+
+  <div class="login-form">
+    <div class="text">
+        Items Available
+    </div>
+    <br>
+    <div class="feild">
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <th style="background:#1b1b1b; color: #868686;">Item ID</th>
+                <th style="background:#1b1b1b; color: #868686;">Item Name</th>
+                <th style="background:#1b1b1b; color: #868686;">Item Quantity</th>
+                <th style="background:#1b1b1b; color: #868686;">Price per item</th>
+            </tr>
+
+            <%
+                DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ada_assignment", "root", "root");
+                Statement stat = conn.createStatement();
+                ResultSet res = stat.executeQuery("Select * from item_list;");
+
+                while (res.next()) {
+            %>
+                    <tr>
+                    <th class='text' style='background:#1b1b1b; color: #868686;'><%= res.getString("itemid") %></th>
+                    <th class='text' style='background:#1b1b1b; color: #868686;'><%= res.getString("itemname") %></th>
+                    <th class='text' style='background:#1b1b1b; color: #868686;'><%= res.getInt("quantity") %></th>
+                    <th class='text' style='background:#1b1b1b; color: #868686;'><%= res.getInt("priceperitem") %></th>
+                    </tr>
+            <%
+                }
+            %>
 
 
-    <aside class="right-sidebar">
-      <div class="login-form">
-        <div class="text">
-          Shopping cart display
-        </div>
-      </div>
-    </aside>
-    <footer class="footer">
-      <div class="text">
-        Team Members: Akanksha Pal, Namaskruti Pal and Soham Kothari
-      </div>
-    </footer>
+        </table>
+    </div>
   </div>
 </body>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

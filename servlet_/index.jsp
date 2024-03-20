@@ -171,23 +171,33 @@ button:hover{
 <!---------------------------------------------------------------------------------------->
 
 <body>
-<div class="login-form">
-  <div class="text">
-    Sign Up
+  <div class="login-form">
+     <div class="text">
+        Enter Info.
+     </div>
+     <form action="/Servlet/advjavalab1" method="get">
+        <div class="field">
+           <div class="fas fa-envelope"></div>
+           <input type="text" placeholder="Name" name="name">
+        </div>
+        <div class="field">
+           <div class="fas fa-envelope"></div>
+           <input type="text" placeholder="Email" name="email">
+        </div>
+        <div class="field">
+           <div class="fas fa-envelope"></div>
+           <input type="number" placeholder="Phone" name="number">
+        </div>
+        <div class="field">
+           <div class="fas fa-lock"></div>
+           <input type="password" placeholder="Password" name="password">
+        </div>
+        <button>Enter</button>
+     </form>
+     <form action="/Servlet/advjavalab2">
+       <button>Display Database</button>
+     </form>
   </div>
-  <form action="/Servlet/signup" method="get">
-    <div class="field">
-      <div class="fas fa-envelope"></div>
-      <input type="text" placeholder="Name" name="name">
-    </div>
-    <div class="field">
-      <div class="fas fa-envelope"></div>
-      <input type="password" placeholder="Password" name="password">
-    </div>
-    <button>Enter</button>
-    <div class="link"><a href="loginPage">Already have an account? Login here</a></div>
-  </form>
-</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
