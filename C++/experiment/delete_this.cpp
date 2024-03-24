@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 using namespace std;
 
 class Solution {
@@ -42,3 +43,13 @@ public:
         }
     }
 };
+
+int main(int argc, char const *argv[])
+{
+    vector<int> ans(3, 10);
+    for(auto i: ans){
+        cout << i << " " ;
+    }
+
+    return 0;
+}
