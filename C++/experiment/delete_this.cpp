@@ -44,17 +44,17 @@ int main(){
     // index  : 0 1 2 3 4 5 6 
     // values : 0 1 1 2 3 5 8 <- ans = 8
 
-    int val = 6;
+    int ind = 6;
 
     // Through recursion
-    cout << fibRec(val) << endl;
+    cout << fibRec(ind) << endl;
 
     // Through memoization
-    vector<int> mem(val + 1, -1);
-    cout << fibMem(val, mem) << endl;
+    vector<int> mem(ind + 1, -1);
+    cout << fibMem(ind, mem) << endl;
 
     // Through tabulation
-    cout << fibTab(val);
+    cout << fibTab(ind);
 
     return 0;
 }

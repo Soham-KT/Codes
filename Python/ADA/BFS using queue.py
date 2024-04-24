@@ -28,6 +28,21 @@ class Graph:
 
         print()
 
+    def DFS(self, vertex: int) -> None:
+        stk = [vertex]
+        while len(stk) != 0:
+            last = stk[-1]
+            stk.pop()
+
+            if self.hash_map[last] == 0:
+                self.hash_map[last] = 1
+                print(last, end=" ")
+
+                for i in self.adjacency_list[last]:
+                    stk.append(i)
+
+        print()
+
 
 if __name__ == '__main__':
     g = Graph()
@@ -46,4 +61,7 @@ if __name__ == '__main__':
     g.insert_edge(1, 4)
     g.insert_edge(6, 4)
 
-    g.BFS(2)
+    # print("BFS: ", end=" ")
+    # g.BFS(2)
+    print("DFS: ", end=" ")
+    g.DFS(2)
