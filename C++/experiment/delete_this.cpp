@@ -22,6 +22,10 @@ bool validP(string s){
             i++;
             j--;
         }
+
+        stack<int> coi;
+
+        coi.top();
     }
 
     return true;
