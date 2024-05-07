@@ -1,60 +1,41 @@
 #include <iostream>
 #include <vector>
+#include <map>
+#include <stack>
 using namespace std;
 
-int fibRec(int n){
-    // return 0 if n is 0 or return 1 if n is 1
-    if(n == 0 || n == 1) return n;
-
-    return fibRec(n-1) + fibRec(n - 2);
-}
-
-int fibMem(int n, vector<int> mem){
-    // return 0 if n is 0 or return 1 if n is 1
-    if(n == 0 || n == 1) return n;
-
-    // if n is already calculated, return it 
-    else if(mem[n] != -1) return mem[n];
-
-
-    // calculating then storing the value of nth digit
-    return mem[n] = fibMem(n - 1, mem) + fibMem(n - 2, mem);
-}
-
-int fibTab(int n){
-    int tab[n + 1];
-
-    for(int i = 0; i <= n; i++){
-        // store 0 if n is 0 or store 1 if n is 1
-        if(i == 0 || i == 1){
-            tab[i] = i;
+bool validP(string s){
+    int i = 0, j = s.size() - 1;
+    while(i < j){
+        if(!isalnum(s[i])){
+            i++;
+            continue;
         }
-
-        // calculating then storing the value of nth digit
+        if(!isalnum(s[j])){
+            j--;
+            continue;
+        }
+        
+        if(tolower(s[i]) != tolower(s[j])) return false;
+        
         else{
-            tab[i] = tab[i - 1] + tab[i - 2];
+            i++;
+            j--;
         }
     }
 
-    // returing the final ans
-    return tab[n];
+    return true;
 }
 
 int main(){
-    // index  : 0 1 2 3 4 5 6 
-    // values : 0 1 1 2 3 5 8 <- ans = 8
+    
+    vector<int> vec;
+    vec.push_back(1);
+    vec.push_back(2);
+    vec.push_back(3);
+    vec.push_back(4);
 
-    int ind = 6;
-
-    // Through recursion
-    cout << fibRec(ind) << endl;
-
-    // Through memoization
-    vector<int> mem(ind + 1, -1);
-    cout << fibMem(ind, mem) << endl;
-
-    // Through tabulation
-    cout << fibTab(ind);
+    cout << (validP("hello") ? "Yes" : "No");
 
     return 0;
 }

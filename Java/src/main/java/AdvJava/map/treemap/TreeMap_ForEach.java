@@ -3,11 +3,12 @@ package AdvJava.map.treemap;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class TreeMap_ForEach {
     public static void main(String[] args) {
         System.out.println("Soham Kothari");
-        Map<String,Double> salary = new HashMap<>();
+        Map<String,Double> salary = new TreeMap<>();
         salary.put("Soham",453.789);
         salary.put("Kartikey",78000.79);
         salary.put("Tanishq",57006.94);

@@ -1,77 +1,87 @@
 package AdvJava.MultiThreading;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Semaphore;
+import java.util.LinkedList;
 
 public class ProducerConsumer {
-    static Semaphore Lock = new Semaphore(1);
-    static List<Integer> buffer = new ArrayList<>();
-    static int productCount;
+    public static void main(String[] args) throws InterruptedException {
+        final PC pc = new PC();
 
-    public static class producer implements Runnable{
-
-        int products;
-
-        public producer(int products) {
-            this.products = products;
-            productCount += products;
-        }
-
-        @Override
-        public void run() {
-            try{
-                while (products>0){
-                    Lock.acquire();
-                    buffer.add((int) (Math.random()*100));
-                    System.out.println(Thread.currentThread().getName()+" Produced product: "+buffer.getLast());
-                    products-=1;
-
-                    Lock.release();
-                    Thread.sleep(1000);
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                try {
+                    pc.produce();
                 }
-
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        });
+
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                try {
+                    pc.consume();
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
     }
 
-    static class consumer implements Runnable{
-        @Override
-        public void run(){
-            try{
-                while (true){
-                    if (buffer.isEmpty()) {
-                        continue;
-                    }
-                    Lock.acquire();
-                    System.out.println(Thread.currentThread().getName()+" Consumes product: "+buffer.getFirst());
-                    buffer.removeFirst();
-                    productCount--;
-                    if(productCount <=0){
-                        return;
-                    }
-                    Lock.release();
+    public static class PC {
+        LinkedList<Integer> list = new LinkedList<>();
+        int capacity = 2;
+
+        public void produce() throws InterruptedException
+        {
+            int value = 0;
+            while (true) {
+                synchronized (this) {
+
+                    while (list.size() == capacity)
+                        wait();
+
+                    System.out.println("Producer produced-" + value);
+
+                    list.add(value++);
+
+                    notify();
+
                     Thread.sleep(1000);
                 }
-
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
             }
         }
-    }
 
-    public static void main(String[] args) {
-        System.out.println("Soham Kothari");
-        producer product = new producer(5);
-        Thread producer = new Thread(product);
-        producer.setName("Producer");
-        consumer consumption = new consumer();
-        Thread consumer = new Thread(consumption);
-        consumer.setName("Consumer");
-        producer.start();
-        consumer.start();
+        // Function called by consumer thread
+        public void consume() throws InterruptedException
+        {
+            while (true) {
+                synchronized (this)
+                {
+                    while (list.isEmpty())
+                        wait();
 
+                    int val = list.removeFirst();
+
+                    System.out.println("Consumer consumed-"
+                            + val);
+
+                    notify();
+
+                    Thread.sleep(1000);
+                }
+            }
+        }
     }
 }

@@ -6,7 +6,8 @@ public class HashMap_ForEach {
     public static void main(String[] args) {
         System.out.println("Soham Kothari");
         int tableOf = (int) (Math.random() * 100);
-        Map<Integer,Integer> RandomTable =new HashMap<>();
+
+        HashMap<Integer,Integer> RandomTable =new HashMap<>();
         for (int i = 1; i < 11; i++) {
             RandomTable.put(i,i*tableOf);
         }

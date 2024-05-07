@@ -21,3 +21,4 @@ public class Creating_Table {
 
 // executeUpdate -> create, alter, drop, insert, update
 // executeQuery -> select
+
