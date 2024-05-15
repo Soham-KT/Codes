@@ -1,45 +1,71 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <set>
+#include <unordered_set>
 #include <stack>
 using namespace std;
 
-bool validP(string s){
-    int i = 0, j = s.size() - 1;
-    while(i < j){
-        if(!isalnum(s[i])){
-            i++;
-            continue;
-        }
-        if(!isalnum(s[j])){
-            j--;
-            continue;
-        }
-        
-        if(tolower(s[i]) != tolower(s[j])) return false;
-        
-        else{
-            i++;
-            j--;
-        }
+void display(vector<vector<int>> &mat){
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            cout << mat[i][j] << " ";
+        } cout << endl;
+    } cout << endl;
+}
 
-        stack<int> coi;
+void transpose(vector<vector<int>> &mat){
+    int m = mat.size();
+    int n = mat[0].size();
+    int temp = 0;
 
-        coi.top();
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < n; j++){
+            if(i < j){
+                temp = mat[i][j];
+                mat[i][j] = mat[j][i];
+                mat[j][i] = temp;            
+            }
+        }
     }
 
-    return true;
+    display(mat);
+}
+
+void flip(vector<vector<int>> &mat){
+    int m = mat.size();
+    int n = mat[0].size();
+    int mid = n / 2;
+    int temp = 0;
+
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < mid; j++){
+            temp = mat[i][j];
+            mat[i][j] = mat[i][n - 1 - j];
+            mat[i][n - 1 - j] = temp; 
+        }
+    }
+
+    display(mat);
 }
 
 int main(){
-    
-    vector<int> vec;
-    vec.push_back(1);
-    vec.push_back(2);
-    vec.push_back(3);
-    vec.push_back(4);
+    vector<vector<int>> mat(3, vector<int>(3));
+    int x = 1;
 
-    cout << (validP("hello") ? "Yes" : "No");
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            mat[i][j] = x;
+            x++;
+        }
+    }
+
+    display(mat);
+
+    transpose(mat);
+
+    flip(mat);
+
 
     return 0;
 }
